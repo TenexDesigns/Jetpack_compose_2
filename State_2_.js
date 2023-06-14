@@ -147,7 +147,7 @@ Your view models should expose state in an observable holder like live data or s
   You can have one or more observable satet holders ,each one of them should hold state for the part of your screen that are conceptioally related and that change together
 That way you preserve a single source of truth even if the state is used in multple composables
 
-
+Unidirectional stateflow pattern
 
 view model  
 |           ^
@@ -164,12 +164,66 @@ ScreenContent()
 
 
 
-e.g
+e.g ViewModel
 class MyViewModel:ViewModel(){
+    //Livedata holds state which is observed by the UI
+    //(State flows down from viewmodel)
+
+    private val _name = MutableLiveDate("")
+    val nam:LiveDate<String> = _name
+    
+    
+    //onNameChanged is an event we're defining that the UI can Invoke,
+    //(Events flow up from UI)
+    
+    fun onNameChanged(newName:String){
+        _name.value = newNamme
+    }
+}
+
+
+Stateles Composaeble
+
+
+@composale
+fun firstScreen(
+myViewModel:MyViewModel = ViewModel()
+){
+    val name:String by myViewModel.name.observeAsState("")
+    
+    ScrenContent(
+        name = name,
+        onNameChnage = {
+           myViewModel.onNameChnaged(it)
+        }
+        
+    
+    )
+
 
 }
 
 
+
+THERE ARE ALSO TIMES WHEN YOU WHISH TO MAKE COMPOSABLES STATEFUL
+e.g the expanded state of  a card composable
+
+
+@Composable
+fun ExaplandleCard(){
+var expanded y=by remeber {mutableSateof()false}
+}
+
+if (expanded){
+  contentDescript = "Expand"
+}else{
+contentDescriptin ="Collapse"}
+
+
+
+
+
+e.g
 
 
 
