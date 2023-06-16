@@ -1,4 +1,5 @@
-In Material 3, the Card composable function has similar parameters as in Material 2, but with a few changes. Here's an example using Material 3:
+In Material 3, the Card composable function has similar parameters as in Material 2, but with a few changes. 
+Heres an example using Material 3:
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
