@@ -26,7 +26,8 @@ Here we use Side effect and put that code inside it because sideefeect will be e
     }
 
 
-
+Note--->You can also use, the setStatusBarColor() and setNavigationBarColor() methods instead of setSystemBarsColor to change the colors of the status bar and navigation bar, respectively.
+You can pass any Color value to these methods.
 
 
 5.This code can be put in the theme.kt of the app
